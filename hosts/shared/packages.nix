@@ -58,6 +58,7 @@
     btop
     curl
     wget
+    neovim
     ripgrep
     usbutils
     pciutils

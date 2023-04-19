@@ -1,3 +1,5 @@
+{ user, ... }:
+
 {
   imports = [
     ../shared

@@ -124,7 +124,7 @@
 	q = "exit";
 	c = "clear";
 	m = "mkdir -p";
-	v = "${lib.getExe nvim}";
+	v = "${lib.getExe neovim}";
 	cat = "${lib.getExe bat} -p";
 	size = "du -sh";
 	# TODO: add dust (pkgs: du-dust)

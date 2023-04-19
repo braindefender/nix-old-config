@@ -3,6 +3,7 @@
 {
   programs = {
     adb.enable = true;
+    zsh.enable = true;
     dconf.enable = true;
     ssh.startAgent = true;
 

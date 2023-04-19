@@ -36,12 +36,12 @@
       };
     };
 
-    # User configuration
+    # Home configuration
     homeConfigurations = {
       "${user}" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."${system}";
         extraSpecialArgs = { inherit inputs outputs user name; };
-	modules = [ ./home ];
+        modules = [ ./home ];
       };
     };
   };

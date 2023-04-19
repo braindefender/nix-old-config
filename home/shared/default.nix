@@ -4,7 +4,8 @@
   imports = [
     ./packages.nix
     ./shell.nix
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ];
+  # ++ (builtins.attrValues outputs.homeManagerModules);
 
   manual = {
     html.enable = true;
@@ -45,7 +46,7 @@
 
   home = {
     username = "${user}";
-    homeDirectory = "/home/${user}";
+    homeDirectory = "/home/brain";
     stateVersion = "22.11";
   };
 }

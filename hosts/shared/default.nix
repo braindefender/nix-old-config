@@ -1,4 +1,4 @@
-{ config, lib, pkgs, home-manager, inputs, outputs, system, user, ...}:
+{ lib, pkgs, home-manager, inputs, outputs, user, ... }:
 
 {
   imports = [
@@ -6,6 +6,7 @@
     ./env.nix
     ./base.nix
     ./boot.nix
+    ./users.nix
     ./locale.nix
     ./packages.nix
     ./programs.nix
@@ -17,7 +18,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs user; };
   };
 
   # Default network settings. DHCP and Network Manager.

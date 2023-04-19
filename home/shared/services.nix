@@ -5,9 +5,9 @@
 
       settings = {
         General = {
-	  disabledTrayIcon = true;
-	  showStartupLaunchMessage = false;
-	};
+	        disabledTrayIcon = true;
+	        showStartupLaunchMessage = false;
+	      };
       };
     };
 

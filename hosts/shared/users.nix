@@ -1,18 +1,17 @@
-{ pkgs, user, name, ... }:
+{ config, pkgs, user, ... }:
 let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
   users.users.${user} = {
     isNormalUser = true;
-    description = "${name}";
-    initialPassword = "nixos";
+    password = "nixos";
     extraGroups = 
-      [ "wheel" "video" "audio" "input" ] 
-      ++ ifTheyExist [ "network" "networkmanager" "camera" "git" "docker" "mysql" "kvm" "libvirtd" ];
+      [ "wheel" "video" "audio" "input" "networkmanager" ]
+      ++ ifTheyExist [ "camera" "git" "docker" "mysql" "kvm" "libvirtd" ];
     packages = [pkgs.home-manager];
     shell = pkgs.zsh;
   };
 
-  home-manager.users."${user}" = import ../../home/desktop;
+  home-manager.users.${user} = import ../../home/desktop;
 }

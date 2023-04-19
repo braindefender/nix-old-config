@@ -9,10 +9,10 @@
     openssh.enable = true;
     btrfs.autoScrub.enable = true;
 
-    dbus = {
-      enable = true;
-      packages = with pkgs; [dconf gcr];
-    };
+    # dbus = {
+    #   enable = true;
+    #   packages = with pkgs; [dconf gcr];
+    # };
 
     gnome = {
       glib-networking.enable = true;
