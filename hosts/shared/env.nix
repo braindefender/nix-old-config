@@ -10,13 +10,12 @@
     };
 
     binsh = lib.getExe bash;
-    shells = [zsh];
     pathsToLink = [ "/share/zsh" ];
 
-    #  dbus-update-activation-environment --all
-    loginShellInit = ''
-      eval $(gnome-keyring-daemon --start --daemonize --components=pkcs11,secrets,ssh)
-      eval $(ssh-agent)
-    '';
+    # #  dbus-update-activation-environment --all
+    # loginShellInit = ''
+    #   eval $(gnome-keyring-daemon --start --daemonize --components=pkcs11,secrets,ssh)
+    #   eval $(ssh-agent)
+    # '';
   };
 }

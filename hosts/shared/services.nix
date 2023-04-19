@@ -14,25 +14,24 @@
     #   packages = with pkgs; [dconf gcr];
     # };
 
-    gnome = {
-      glib-networking.enable = true;
-      gnome-keyring.enable = true;
-    };
+    # gnome = {
+    #   glib-networking.enable = true;
+    #   gnome-keyring.enable = true;
+    # };
 
-    gvfs.enable = true;
+    # gvfs.enable = true;
 
     xserver = {
       enable = true;
       layout = "us";
-      exportConfiguration = true;
+      # exportConfiguration = true;
       displayManager.gdm.enable = true;
       displayManager.autoLogin.enable = true;
       displayManager.autoLogin.user = "${user}";
       windowManager.i3.enable = true;
     };
 
-    udev.packages = [pkgs.gnome.gnome-settings-daemon];
-
+    # udev.packages = [pkgs.gnome.gnome-settings-daemon];
   };
 
   virtualisation = {

@@ -3,8 +3,8 @@
 {
   security = {
     pam.services = {
+      gdm.enableGnomeKeyring = true;
       login.enableGnomeKeyring = true;
-      lightdm.enableGnomeKeyring = true;
     };
 
     rtkit.enable = true;

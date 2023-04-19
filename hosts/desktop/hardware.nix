@@ -16,13 +16,13 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # TODO: Check
-  hardware.nvidia.modesetting.enable = true;
+  # hardware.nvidia.modesetting.enable = true;
 
   # Enable Bluetooth service
   services.blueman.enable = true;
 
   # Define hostname
-  networking.hostName = "brain-desk";
+  networking.hostName = "desktop";
 
   # Enable Intel microcode
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -11,7 +11,7 @@
     google-chrome
 
     # Messengers
-    zoom-us
+    # zoom-us
     tdesktop
     discord-canary
 
@@ -20,13 +20,13 @@
     mpv
     vlc
     gimp
-    zathura
+    # zathura
 
     # GUI Utilities
-    blueman
-    galculator
+    # blueman
+    # galculator
     gparted
-    virt-manager
+    # virt-manager
 
     # CLI Utilities
     ## Sound

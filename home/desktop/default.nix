@@ -1,5 +1,4 @@
-{ user, ... }:
-
+{ config, lib, pkgs, user, ... }:
 {
   imports = [
     ../shared

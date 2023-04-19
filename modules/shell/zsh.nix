@@ -16,28 +16,28 @@
 
       initExtra = ''
         FZF_TAB_COMMAND=(
-	  ${lib.getExe pkgs.fzf} 
-	  --ansi 
-	  --multi 
-	  --cycle
-	  --height="50%" 
-	  --layout=reverse 
-	  --tiebreak=begin 
-	  --bind=tab:down,btab:up,change:top,ctrl-space:toggle
-	)
+          ${lib.getExe pkgs.fzf}
+          --ansi
+          --multi
+          --cycle
+          --height="50%"
+          --layout=reverse
+          --tiebreak=begin
+          --bind=tab:down,btab:up,change:top,ctrl-space:toggle
+        )
 
-	ZSH_AUTOSUGGEST_USE_ASYNC="true"
-	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor regexp root line)
-	ZSH_HIGHLIGHT_MAXLENGTH=512
+        ZSH_AUTOSUGGEST_USE_ASYNC="true"
+        ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor regexp root line)
+        ZSH_HIGHLIGHT_MAXLENGTH=512
 
         any-nix-shell zsh --info-right | source /dev/stdin
 
         function run() {
-	  nix run nixpkgs#$@
-	}
+          nix run nixpkgs#$@
+        }
 
-	function extract() {
-	  if [ -z "$1" ]; then
+        function extract() {
+          if [ -z "$1" ]; then
             # display usage if no parameters given
             echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz|.zlib|.cso>"
             echo "       extract <path/file_name_1.ext> [path/file_name_2.ext] [path/file_name_3.ext]"
@@ -76,12 +76,12 @@
                return 1
              fi
            done
-        fi
-	}
+          fi
+        }
       '';
 
       envExtra = ''
-	export FZF_DEFAULT_OPTS="
+        export FZF_DEFAULT_OPTS="
           --color fg:#6c7086
           --color fg+:#1e1e2e
           --color bg:#313244
@@ -107,55 +107,55 @@
 
       zplug = {
         enable = true;
-	zplugHome = "${config.xdg.configHome}/zsh/zplug";
-	plugins = [
-	  { name = "Aloxaf/fzf-tab"; }
-	  { name = "zdharma-continuum/fast-syntax-highlighting"; }
-	  { name = "zsh-users/zsh-completions"; }
-	  { name = "zsh-users/zsh-autosuggestions"; }
-	  { name = "zsh-users/zsh-history-substring-search"; }
-	  { name = "hlissner/zsh-autopair"; }
-	  { name = "chisui/zsh-nix-shell"; }
-	];
+        zplugHome = "${config.xdg.configHome}/zsh/zplug";
+        plugins = [
+          { name = "Aloxaf/fzf-tab"; }
+          { name = "zdharma-continuum/fast-syntax-highlighting"; }
+          { name = "zsh-users/zsh-completions"; }
+          { name = "zsh-users/zsh-autosuggestions"; }
+          { name = "zsh-users/zsh-history-substring-search"; }
+          { name = "hlissner/zsh-autopair"; }
+          { name = "chisui/zsh-nix-shell"; }
+        ];
       };
 
       shellAliases = with pkgs; {
         # Base
-	q = "exit";
-	c = "clear";
-	m = "mkdir -p";
-	v = "${lib.getExe neovim}";
-	cat = "${lib.getExe bat} -p";
-	size = "du -sh";
-	# TODO: add dust (pkgs: du-dust)
-	hx = "helix";
+        q = "exit";
+        c = "clear";
+        m = "mkdir -p";
+        v = "${lib.getExe neovim}";
+        cat = "${lib.getExe bat} -p";
+        size = "du -sh";
+        # TODO: add dust (pkgs: du-dust)
+        hx = "helix";
 
         # Exa instead of ls
         l = "${lib.getExe exa} -l --group-directories-first --time-style long-iso --no-user --icons";
         ll = "${lib.getExe exa} -la --group-directories-first --time-style long-iso --no-user --icons";
         la = "${lib.getExe exa} -la --group-directories-first --time-style long-iso --no-user --icons";
-	tree = "${lib.getExe exa} --tree --icons --level=2";
-	treee = "${lib.getExe exa} --tree --icons --level=3";
+        tree = "${lib.getExe exa} --tree --icons --level=2";
+        treee = "${lib.getExe exa} --tree --icons --level=3";
 
         # ZSH
-	s = "source ~/.zshrc";
+        s = "source ~/.zshrc";
 
-	# Git
-	g = "git";
-	push = "git push";
-	pull = "git pull";
-	fetch = "git fetch";
-	commit = "git add . && git commit -m";
+        # Git
+        g = "git";
+        push = "git push";
+        pull = "git pull";
+        fetch = "git fetch";
+        commit = "git add . && git commit -m";
 
-	# YouTube (download video and/or audio)
-	ytv = "${lib.getExe yt-dlp} --format \"bv*+ba/b\"";
-	yta = ''
+        # YouTube (download video and/or audio)
+        ytv = "${lib.getExe yt-dlp} --format \"bv*+ba/b\"";
+        yta = ''
           ${lib.getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"
-	'';
+        '';
 
         # NixOS
-	cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
-	bloat = "nix path-info -Sh /run/current-system";
+        cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
+        bloat = "nix path-info -Sh /run/current-system";
 
         # Others
       };

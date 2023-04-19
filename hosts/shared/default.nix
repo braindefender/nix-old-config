@@ -15,12 +15,6 @@
     ./pipewire.nix
   ];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs outputs user; };
-  };
-
   # Default network settings. DHCP and Network Manager.
   networking = {
     useDHCP = lib.mkDefault true;
@@ -30,16 +24,16 @@
   # Enable power management TODO: Check
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  hardware = {
-    enableRedistributableFirmware = true;
+  # hardware = {
+    # enableRedistributableFirmware = true;
 
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      # TODO: Check that extraPackages are needed?
-    };
-  };
+    # opengl = {
+    #   enable = true;
+    #   driSupport = true;
+    #   driSupport32Bit = true;
+    #   # TODO: Check that extraPackages are needed?
+    # };
+  # };
 
   xdg.portal = {
     enable = true;

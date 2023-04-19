@@ -3,12 +3,12 @@
 {
   boot = {
     loader = {
-      timeout = 1;
+      timeout = 2;
 
       # Enable systemd-boot instead of GRUB
       systemd-boot = {
         enable = true;
-	configurationLimit = 5;
+        configurationLimit = 15;
       };
 
       efi = {

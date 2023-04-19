@@ -6,12 +6,10 @@ in
   users.users.${user} = {
     isNormalUser = true;
     password = "nixos";
-    extraGroups = 
+    extraGroups =
       [ "wheel" "video" "audio" "input" "networkmanager" ]
       ++ ifTheyExist [ "camera" "git" "docker" "mysql" "kvm" "libvirtd" ];
     packages = [pkgs.home-manager];
     shell = pkgs.zsh;
   };
-
-  home-manager.users.${user} = import ../../home/desktop;
 }

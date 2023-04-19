@@ -1,17 +1,17 @@
-{ config, lib, pkgs, inputs, outputs, user, ... }:
+{ config, lib, pkgs, user, ... }:
 
 {
   imports = [
     ./packages.nix
+    # ./services.nix
     ./shell.nix
   ];
-  # ++ (builtins.attrValues outputs.homeManagerModules);
 
-  manual = {
-    html.enable = true;
-    json.enable = false;
-    manpages.enable = true;
-  };
+  # manual = {
+  #   html.enable = true;
+  #   json.enable = false;
+  #   manpages.enable = true;
+  # };
 
   xsession = {
     enable = true;
@@ -22,8 +22,8 @@
     enable = true;
 
     userDirs = {
-      enable = false;
-      createDirectories = false;
+      enable = true;
+      createDirectories = true;
     };
   };
 

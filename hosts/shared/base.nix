@@ -2,12 +2,12 @@
 
 {
   # TODO: Check what is documentation
-  documentation = {
-    enable = true;
-    man.enable = true;
-    doc.enable = false;
-    dev.enable = false;
-  };
+  # documentation = {
+  #   enable = true;
+  #   man.enable = true;
+  #   doc.enable = false;
+  #   dev.enable = false;
+  # };
 
   nixpkgs = {
     # Allow unfree packages

@@ -16,11 +16,6 @@
       ;
 
     inherit
-      (pkgs.luaPackages)
-      lua
-      ;
-    
-    inherit
       (pkgs.nodePackages_latest)
       prettier
       typescript-language-server
