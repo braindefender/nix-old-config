@@ -1,4 +1,4 @@
-{}:
+{ pkgs, ... }:
 let
   execute = ''
     exec-once=${pkgs.waybar}/bin/waybar
@@ -42,7 +42,6 @@ let
 
   hyprlandConf = ''
     general {
-      main_mod=SUPER
       border_size=3
       gaps_in=5
       gaps_out=7

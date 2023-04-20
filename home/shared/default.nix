@@ -6,6 +6,7 @@
     ./packages.nix
     ./services.nix
     ./hyprland.nix
+    ./vscode.nix
   ];
 
   # manual = {
