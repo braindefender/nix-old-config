@@ -6,7 +6,7 @@
     [( modulesPath + "/installer/scan/not-detected.nix" )] ++
 
     # Shared configuration across all machines
-    [import ../shared] ++
+    [(import ../shared)] ++
 
     # Hardware configuration
     [( import ./hardware.nix )] ++

@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, nur, home-manager, ... }:
   let
     user = "brain";
     name = "Nikita Shirokov";
@@ -25,7 +25,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nur home-manager user name system
+        inherit inputs nixpkgs nur home-manager user name system;
       }
     );
   };

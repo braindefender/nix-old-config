@@ -5,7 +5,6 @@
     adb.enable = true;
     zsh.enable = true;
     dconf.enable = true;
-    qt5ct.enable = true;
     ssh.startAgent = true;
 
     waybar.enable = true;
