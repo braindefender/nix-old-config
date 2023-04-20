@@ -1,11 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
 {
   # Enable Unsupported GPU for Wayland because of NVidia
-  home-manager.users.${user} = { pkgs, ... }:
-  {
-    wayland.windowManager.sway.extraOptions = [ "--unsupported-gpu" ];
-  }
+  wayland.windowManager.sway.extraOptions = [ "--unsupported-gpu" ];
 
   # Wallpaper
   home.file.".config/wall".source = config.lib.file.mkOutOfStoreSymlink ../../modules/themes/wall;

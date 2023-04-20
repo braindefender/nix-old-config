@@ -14,7 +14,6 @@
 
   # Enable NVidia drivers for X and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
-  services.xserver.displayManager.gdm.nvidiaWayland = true;
 
   # TODO: Check
   hardware.nvidia.modesetting.enable = true;
