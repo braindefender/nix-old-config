@@ -13,6 +13,7 @@
     ./security.nix
     ./services.nix
     ./pipewire.nix
+    ./hyprland.nix
   ];
 
   # Default network settings. DHCP and Network Manager.

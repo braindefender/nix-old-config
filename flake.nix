@@ -7,6 +7,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     nur.url = "github:nix-community/NUR";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,7 +15,7 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, nur, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, nur, hyprland, home-manager, ... }:
   let
     user = "brain";
     name = "Nikita Shirokov";
@@ -25,7 +26,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nur home-manager user name system;
+        inherit inputs nixpkgs nur hyprland home-manager user name system;
       }
     );
   };
