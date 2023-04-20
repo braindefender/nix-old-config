@@ -55,7 +55,7 @@
       noto-fonts-emoji
       font-awesome
       (nerdfonts.override {
-        fonts = ["FiraCode"];
+        fonts = ["FiraCode" "JetBrainsMono"];
       })
     ];
 

@@ -11,6 +11,7 @@
     ./services.nix
     ./hyprland.nix
     ./vscode.nix
+    ./kitty.nix
   ];
 
   # manual = {

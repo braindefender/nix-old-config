@@ -41,20 +41,20 @@
 
   hyprlandConf = ''
     general {
-      border_size=3
-      gaps_in=5
-      gaps_out=7
+      border_size=1
+      gaps_in=4
+      gaps_out=8
       layout=dwindle
     }
 
     decoration {
-      multisample_edges = true
+      multisample_edges = false
       fullscreen_opacity = 1
-      inactive_opacity = 0.8
-      active_opacity = 0.93
+      inactive_opacity = 0.9
+      active_opacity = 1
       drop_shadow = false
       blur = true
-      rounding = 5
+      rounding = 0
     }
 
     animations {

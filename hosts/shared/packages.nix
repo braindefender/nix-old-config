@@ -29,7 +29,7 @@
     # galculator
     gparted
     virt-manager
-    vscode
+    pcmanfm
 
     # CLI Utilities
     ## Sound
