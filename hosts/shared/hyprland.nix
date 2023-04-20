@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-let
-  exec = "exec Hyprland";
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  exec = "exec Hyprland";
+in {
   environment = {
     loginShellInit = ''
       if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then

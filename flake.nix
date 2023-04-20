@@ -15,13 +15,18 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, nur, hyprland, home-manager, ... }:
-  let
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    nur,
+    hyprland,
+    home-manager,
+    ...
+  }: let
     user = "brain";
     name = "Nikita Shirokov";
     system = "x86_64-linux"; # can also be "aarch-64-linux"
-  in
-  {
+  in {
     # System configuration
     nixosConfigurations = (
       import ./hosts {

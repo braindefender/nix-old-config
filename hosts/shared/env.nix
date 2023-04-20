@@ -1,6 +1,8 @@
-{ lib, pkgs, ... }:
-
 {
+  lib,
+  pkgs,
+  ...
+}: {
   environment = with pkgs; {
     variables = {
       VISUAL = "nvim";
@@ -15,7 +17,7 @@
     };
 
     binsh = lib.getExe bash;
-    pathsToLink = [ "/share/zsh" ];
+    pathsToLink = ["/share/zsh"];
 
     # #  dbus-update-activation-environment --all
     # loginShellInit = ''

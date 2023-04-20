@@ -1,6 +1,12 @@
-{ lib, pkgs, home-manager, inputs, outputs, user, ... }:
-
 {
+  lib,
+  pkgs,
+  home-manager,
+  inputs,
+  outputs,
+  user,
+  ...
+}: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./env.nix
@@ -26,19 +32,19 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   # hardware = {
-    # enableRedistributableFirmware = true;
+  # enableRedistributableFirmware = true;
 
-    # opengl = {
-    #   enable = true;
-    #   driSupport = true;
-    #   driSupport32Bit = true;
-    #   # TODO: Check that extraPackages are needed?
-    # };
+  # opengl = {
+  #   enable = true;
+  #   driSupport = true;
+  #   driSupport32Bit = true;
+  #   # TODO: Check that extraPackages are needed?
+  # };
   # };
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   # TODO: Move to a separate file
@@ -65,5 +71,4 @@
       subpixel.lcdfilter = "default";
     };
   };
-
 }

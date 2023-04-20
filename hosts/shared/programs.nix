@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs = {
     adb.enable = true;
     zsh.enable = true;

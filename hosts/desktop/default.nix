@@ -1,16 +1,14 @@
-{ config, lib, pkgs, modulesPath, inputs, outputs, home-manager, user, ... }:
-
-{
+{modulesPath, ...}: {
   imports =
     # Default system installer configuration
-    [( modulesPath + "/installer/scan/not-detected.nix" )] ++
-
+    [(modulesPath + "/installer/scan/not-detected.nix")]
+    ++
     # Shared configuration across all machines
-    [(import ../shared)] ++
-
+    [(import ../shared)]
+    ++
     # Hardware configuration
-    [( import ./hardware.nix )] ++
-
+    [(import ./hardware.nix)]
+    ++
     # Partition table
-    [( import ./partitions.nix )];
+    [(import ./partitions.nix)];
 }

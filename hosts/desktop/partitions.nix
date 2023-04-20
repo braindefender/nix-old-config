@@ -1,5 +1,4 @@
-{config, ...}:
-let
+{config, ...}: let
   # Define OS partition label
   label = "NIX";
 
@@ -10,31 +9,30 @@ let
     "noatime"
     "ssd"
   ];
-in
-{
+in {
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/${label}";
       fsType = "btrfs";
-      options = btrfs ++ [ "subvol=root" ];
+      options = btrfs ++ ["subvol=root"];
     };
 
     "/home" = {
       device = "/dev/disk/by-label/${label}";
       fsType = "btrfs";
-      options = btrfs ++ [ "subvol=home" ];
+      options = btrfs ++ ["subvol=home"];
     };
 
     "/nix" = {
       device = "/dev/disk/by-label/${label}";
       fsType = "btrfs";
-      options = btrfs ++ [ "subvol=nix" ];
+      options = btrfs ++ ["subvol=nix"];
     };
 
     "/log" = {
       device = "/dev/disk/by-label/${label}";
       fsType = "btrfs";
-      options = btrfs ++ [ "subvol=log" ];
+      options = btrfs ++ ["subvol=log"];
       neededForBoot = true;
     };
 
@@ -44,5 +42,5 @@ in
     };
   };
 
-  swapDevices = [ { device = "/dev/disk/by-label/SWP"; } ];
+  swapDevices = [{device = "/dev/disk/by-label/SWP";}];
 }

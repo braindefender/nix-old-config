@@ -1,6 +1,10 @@
-{ config, lib, pkgs, user, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  user,
+  ...
+}: {
   imports = [
     ./shell.nix
     ./packages.nix
@@ -32,7 +36,7 @@
   nix = {
     package = lib.mkForce pkgs.nixUnstable;
     settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
     };
   };

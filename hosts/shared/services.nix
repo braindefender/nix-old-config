@@ -1,6 +1,8 @@
-{ pkgs, user, ... }:
-
 {
+  pkgs,
+  user,
+  ...
+}: {
   services = {
     fwupd.enable = true;
     fstrim.enable = true;
@@ -23,7 +25,7 @@
     # gvfs.enable = true;
 
     xserver = {
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = ["nvidia"];
       displayManager.gdm.wayland = true;
     };
 

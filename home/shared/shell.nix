@@ -24,12 +24,12 @@
     yt-dlp
 
     # Nix # TODO: Check what packages do?
-    # alejandra
-    # any-nix-shell
+    any-nix-shell
     # cached-nix-shell
-    # deadnix
     # nix-index
-    # statix
+    alejandra # Nix Formatter
+    deadnix # Nix Dead-code
+    statix # Nix Linter
   ];
 
   programs = {
@@ -39,11 +39,11 @@
     ssh.enable = true;
     bat.enable = true;
 
-    # fzf.enable = true;
-    # fzf.enableZshIntegration = true;
+    fzf.enable = true;
+    fzf.enableZshIntegration = true;
 
-    # dircolors.enable = true;
-    # dircolors.enableZshIntegration = true;
+    dircolors.enable = true;
+    dircolors.enableZshIntegration = true;
 
     git = {
       enable = true;

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   execute = ''
     exec-once=${pkgs.waybar}/bin/waybar
     exec-once=${pkgs.swaybg}/bin/swaybg
@@ -83,7 +82,6 @@ let
     ${bindings}
     ${windowRules}
   '';
-in
-{
-  xdg.configFile."hypr/hyprland.conf".text = hyprlandConf; 
+in {
+  xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
 }

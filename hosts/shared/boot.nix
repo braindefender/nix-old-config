@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   boot = {
     loader = {
       timeout = 2;
@@ -17,9 +19,9 @@
       };
     };
 
-    initrd.supportedFilesystems = [ "btrfs" ];
+    initrd.supportedFilesystems = ["btrfs"];
     initrd.systemd.enable = true;
     kernelPackages = pkgs.linuxPackages_latest;
-    extraModulePackages = with config.boot.kernelPackages; [ ];
+    extraModulePackages = with config.boot.kernelPackages; [];
   };
 }

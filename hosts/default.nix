@@ -1,12 +1,20 @@
-{ lib, nixpkgs, inputs, nur, home-manager, user, name, system, ... }:
-let
+{
+  lib,
+  nixpkgs,
+  inputs,
+  nur,
+  home-manager,
+  user,
+  name,
+  system,
+  ...
+}: let
   lib = nixpkgs.lib;
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
   };
-in
-{
+in {
   desktop = lib.nixosSystem {
     inherit system;
     specialArgs = {
@@ -17,7 +25,8 @@ in
       nur.nixosModules.nur
       ./desktop
 
-      home-manager.nixosModules.home-manager {
+      home-manager.nixosModules.home-manager
+      {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {

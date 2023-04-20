@@ -1,122 +1,128 @@
-{}:
-let 
-  prettier = { editor.defaultFormatter = "esbenp.prettier-vscode"; };
-in
-{
+{pkgs, ...}: let
+  prettier = {"editor.defaultFormatter" = "esbenp.prettier-vscode";};
+in {
+  xdg.configFile."code-flags.conf".text = ''
+    --enable-features=UseOzonePlatform
+    --ozone-platform=wayland
+  '';
+
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
+
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = true;
 
+    extensions = with pkgs.vscode-extensions; [
+      vscodevim.vim # Vim
+      jnoortheen.nix-ide # Nix IDE
+      catppuccin.catppuccin-vsc # Catppuccin Theme
+      eamodio.gitlens # GitLens
+      dbaeumer.vscode-eslint # ESLint
+      esbenp.prettier-vscode # Prettier
+    ];
+
     userSettings = {
-      telemetry.telemetryLevel = "off";
-      emmet.useInlineCompetions = true;
-      security.workspace.trust.enabled = false;
-      extensions.ignoreRecommendations = true;
+      "telemetry.telemetryLevel" = "off";
+      "emmet.useInlineCompletions" = true;
+      "security.workspace.trust.enabled" = false;
+      "extensions.ignoreRecommendations" = true;
+      "workbench.colorTheme" = "Catppuccin Macchiato";
 
-      window = {
-        zoomLevel = 1;
+      "window.zoomLevel" = 1;
+      "window.titleBarStyle" = "custom";
+
+      "workbench.settings.useSplitJSON" = true;
+      "workbench.layoutControl.type" = "toggles";
+      "workbench.sideBar.location" = "right";
+      "workbench.list.smoothScrolling" = true;
+      "workbench.tree.renderIndentGuides" = "always";
+      "workbench.tree.indent" = 12;
+
+      "explorer.confirmDelete" = false;
+      "explorer.fileNesting.expand" = false;
+      "explorer.fileNesting.patterns" = {
+        "*.tsx" = "\$\{capture\}.ts, \$\{capture\}.styles.ts, \$\{capture\}.stories.tsx, \$\{capture\}.spec.tsx, index.ts";
+        "jest.config.js" = "jest.config.js, jest.setup.js";
+        "*.yml" = "gitlab-ci*.yml";
       };
 
-      workbench = {
-        settings.useSplitJSON = true;
-        layoutControl.type = "toggles";
-        sideBar.location = "right";
-        list.smoothScrolling = true;
-        tree.renderIndentGuides = "always";
-        tree.indent = 12;
+      "files.autoSave" = "onFocusChange";
+      "files.insertFinalNewline" = true;
+      "files.trimFinalNewlines" = true;
+      "files.trimTrailingWhitespace" = true;
+
+      # Cursor
+      "editor.cursorWidth" = 2;
+      "editor.cursorBlinking" = "solid";
+      "editor.cursorSurroundingLines" = 4;
+
+      # Font
+      "editor.fontSize" = 13;
+      "editor.lineHeight" = 1.45;
+      "editor.fontLigatures" = true;
+      "editor.fontWeight" = 350;
+
+      # Behaviour
+      "editor.suggest.preview" = true;
+      "editor.formatOnSave" = true;
+      "editor.formatOnPaste" = true;
+      "editor.linkedEditing" = true;
+      "editor.lineNumbers" = "relative";
+      "editor.renderLineHighlight" = "all";
+      "editor.gotoLocation.multipleDefinitions" = "goto";
+
+      # Scroll
+      "editor.smoothScrolling" = true;
+      "editor.stickyScroll.enabled" = true;
+      "editor.scrollBeyondLastLine" = false;
+      "editor.scrollbar.verticalScrollbarSize" = 8;
+      "editor.scrollbar.horizontalScrollbarSize" = 8;
+
+      # Others
+      "editor.minimap.showSlider" = "always";
+      "editor.minimap.renderCharacters" = false;
+      "editor.accessibilitySupport" = "off";
+      "editor.unicodeHighlight.allowedLocales" = {
+        ru = true;
       };
 
-      explorer = {
-        confirmDelete = false;
-        fileNesting.expand = false;
-        fileNesting.patterns = {
-          "*.tsx" = "\$\{capture\}.ts, \$\{capture\}.styles.ts, \$\{capture\}.stories.tsx, \$\{capture\}.spec.tsx, index.ts";
-          "jest.config.js" = "jest.config.js, jest.setup.js";
-          "*.yml" = "gitlab-ci*.yml";
-        };
+      # Terminal
+      "terminal.integrated.cursorStyle" = "underline";
+      "terminal.integrated.fontSize" = 13;
+      "terminal.integrated.fontWeight" = "350";
+      "terminal.integrated.scrollback" = 10000;
+      "terminal.integrated.smoothScrolling" = true;
+
+      # VIM Settings
+      "vim.leader" = " ";
+      "vim.history" = 1000;
+      "vim.inccommand" = "append"; # show inline substitutions
+      "vim.useSystemClipboard" = true;
+
+      # VIM Keybindings
+      "vim.handleKeys" = {
+        "<C-d>" = true;
+        "<C-f>" = false;
+        "<C-s>" = false;
+        "<C-z>" = false;
       };
 
-      files = {
-        autoSave = "onFocusChange";
-        insertFinalNewline = true;
-        trimFinalNewlines = true;
-        trimTrailingWhitespace = true;
-      };
+      "vim.insertModeKeyBindingsNonRecursive" = [
+        {
+          before = ["j" "k"];
+          after = ["<Esc>" "l"];
+        }
+      ];
 
-      editor = {
-        # Cursor
-        cursorWidth = 2;
-        cursorBlinking = "solid";
-        cursorSurroundingLines = 4;
+      # VIM Plugins
+      "vim.camelCaseMotion.enable" = true;
+      "vim.highlightedyank.enable" = true;
 
-        # Font
-        fontSize = 13;
-        lineHeight = 1.45;
-        fontLigatures = true;
-        fontWeight = 350;
-
-        # Behaviour
-        suggest.preview = true;
-        formatOnSave = true;
-        formatOnPaste = true;
-        linkedEditing = true;
-        lineNumbers = "relative";
-        renderLineHighlight = "all";
-        gotoLocation.multipleDefinitions = "goto";
-
-        # Scroll
-        smoothScrolling = true;
-        stickyScroll.enabled = true;
-        scrollBeyondLastLine = false;
-        scrollbar = {
-          verticalScrollbarSize = 8;
-          horizontalScrollbarSize = 8;
-        };
-
-        # Others
-        minimap.showSlider = "always";
-        minimap.renderCharacters = false;
-        accessibilitySupport = "off";
-        unicodeHighlight.allowedLocales.ru = true;
-      };
-
-      terminal.integrated = {
-        cursorStyle = "underline";  
-        fontSize = 13;  
-        fontWeight = "350";  
-        scrollback = 10000;  
-        smoothScrolling = true;
-      };
-
-      vim = {
-        leader = " ";
-        history = 1000;
-        inccommand = "append"; # show inline substitutions
-        useSystemClipboard = true;
-
-        handleKeys = {
-          "<C-d>" = true;
-          "<C-f>" = false;
-          "<C-s>" = false;
-          "<C-z>" = false;
-        };
-
-        insertModeKeyBindingsNonRecursive = [
-          { before = [ "j" "k" ]; after = [ "<Esc>" "l" ]; }
-        ];
-
-        # Plugins
-        camelCaseMotion.enable = true;
-        highlightedyank.enable = true;
-      };
-
-      typescript = {
-        updateImportsOnFileMove.enabled = "always";
-      };
+      "typescript.updateImportsOnFileMove.enabled" = "always";
 
       # Turn off stupid auto-formatter that breaks files
       "[less]" = {
-        editor.formatOnSave = false;
+        "editor.formatOnSave" = false;
       };
 
       # Prettier Everything

@@ -1,6 +1,11 @@
-{ config, lib, pkgs, inputs, system, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  system,
+  ...
+}: {
   # TODO: Check what is documentation
   # documentation = {
   #   enable = true;
@@ -21,7 +26,7 @@
     settings = {
       auto-optimise-store = true;
       builders-use-substitutes = true;
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
       max-jobs = "auto";
       keep-outputs = true;
@@ -38,7 +43,7 @@
     # TODO: Check nixFlakes vs nixUnstable
     package = pkgs.nixFlakes;
 
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     # TODO: Check what is nixPath
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
