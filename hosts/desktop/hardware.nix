@@ -12,11 +12,13 @@
     kernelModules = [ "kvm-intel" ];
   };
 
-  # Enable NVidia drivers for X
+  # Enable NVidia drivers for X and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.displayManager.gdm.nvidiaWayland = true;
 
   # TODO: Check
-  # hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.powerManagement.enable = false;
 
   # Enable Bluetooth service
   services.blueman.enable = true;

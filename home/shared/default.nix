@@ -3,7 +3,8 @@
 {
   imports = [
     ./packages.nix
-    # ./services.nix
+    ./services.nix
+    ./desktop.nix
     ./shell.nix
   ];
 

@@ -7,6 +7,11 @@
       EDITOR = "nvim";
       BROWSER = "firefox";
       TERMINAL = "kitty";
+      WLR_NO_HARDWARE_CURSORS = "1";
+    };
+
+    sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = "1";
     };
 
     binsh = lib.getExe bash;
