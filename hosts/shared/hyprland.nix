@@ -25,7 +25,6 @@ in {
     };
 
     systemPackages = with pkgs; [
-      wofi
       grim
       slurp
       swaybg

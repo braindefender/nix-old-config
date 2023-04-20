@@ -12,6 +12,7 @@
     ./hyprland.nix
     ./vscode.nix
     ./kitty.nix
+    ./wofi.nix
   ];
 
   # manual = {
