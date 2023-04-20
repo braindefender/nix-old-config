@@ -23,8 +23,10 @@ in
     };
 
     systemPackages = with pkgs; [
+      wofi
       grim
       slurp
+      swaybg
       swaylock
       wl-clipboard
       wlr-randr

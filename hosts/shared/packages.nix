@@ -26,7 +26,8 @@
     # blueman
     # galculator
     gparted
-    # virt-manager
+    virt-manager
+    vscode
 
     # CLI Utilities
     ## Sound

@@ -2,9 +2,10 @@
 
 {
   imports = [
+    ./shell.nix
     ./packages.nix
     ./services.nix
-    ./shell.nix
+    ./hyprland.nix
   ];
 
   # manual = {
