@@ -6,6 +6,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    nur.url = "github:nix-community/NUR";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,11 +22,11 @@
   in
   {
     # System configuration
-    nixosConfigurations = {
+    nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager user name system
+        inherit inputs nixpkgs nur home-manager user name system
       }
-    };
+    );
   };
 }

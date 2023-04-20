@@ -8,6 +8,7 @@
     flatpak.enable = true;
     openssh.enable = true;
     btrfs.autoScrub.enable = true;
+    qemuGuest.enable = true;
 
     # dbus = {
     #   enable = true;
@@ -28,7 +29,7 @@
       displayManager.gdm.enable = true;
       displayManager.autoLogin.enable = true;
       displayManager.autoLogin.user = "${user}";
-      windowManager.i3.enable = true;
+      # windowManager.i3.enable = true;
     };
 
     # udev.packages = [pkgs.gnome.gnome-settings-daemon];

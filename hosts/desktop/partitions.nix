@@ -39,12 +39,10 @@ in
     };
 
     ${config.boot.loader.efi.efiSysMountPoint} = {
-      # device = "/dev/disk/by-uuid/B510-A79C";
       device = "/dev/disk/by-label/EFI";
       fsType = "vfat";
     };
   };
 
   swapDevices = [ { device = "/dev/disk/by-label/SWP"; } ];
-  # swapDevices = [  ];
 }
