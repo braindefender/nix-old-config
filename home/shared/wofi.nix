@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  colors = import ../../modules/themes.nix;
+  colors = import ../../modules/themes/colors.nix;
 in {
   home = {
     packages = with pkgs; [wofi];
@@ -28,7 +28,7 @@ in {
     };
 
     ".config/wofi/style.css" = with colors.scheme.doom; {
-      test = ''
+      text = ''
         window {
           margin: 0px;
           background-color: #${bg};

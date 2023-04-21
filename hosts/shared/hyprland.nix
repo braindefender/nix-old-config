@@ -34,6 +34,9 @@ in {
     ];
   };
 
+  # Fixes swaylock not accepting user password
+  security.pam.services.swaylock = {};
+
   programs.waybar.enable = true;
 
   programs.hyprland = {

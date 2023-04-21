@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../modules/shell
   ];
@@ -12,7 +14,7 @@
     du-dust
     # fd #
     # file #
-    # jq #
+    jq
     killall
     man-pages
     man-pages-posix
@@ -26,7 +28,7 @@
     # Nix # TODO: Check what packages do?
     any-nix-shell
     # cached-nix-shell
-    # nix-index
+    nix-index # Nix Modules Indexer
     alejandra # Nix Formatter
     deadnix # Nix Dead-code
     statix # Nix Linter

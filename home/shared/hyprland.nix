@@ -13,11 +13,11 @@
     bind=SUPER,up,movefocus,u
     bind=SUPER,right,movefocus,r
 
-    bind=ALT,left,workspace,-1
-    bind=ALT,right,workspace,+1
+    bindl=CTRL_SUPER,left,workspace,-1
+    bindl=CTRL_SUPER,right,workspace,+1
 
-    bind=ALTSHIFT,left,movetoworkspace,-1
-    bind=ALTSHIFT,right,movetoworkspace,+1
+    bind=CTRLSHIFT,left,movetoworkspace,-1
+    bind=CTRLSHIFT,right,movetoworkspace,+1
 
     bind=SUPER,Return,exec,${pkgs.kitty}/bin/kitty
     bind=SUPER,Escape,exit,
@@ -27,7 +27,8 @@
     bind=SUPER,H,togglefloating,
     bind=SUPER,Space,exec,${pkgs.wofi}/bin/wofi --show drun
     bind=SUPER,F,fullscreen,
-    bind=SUPER,R,forcerendererreload,
+    bind=SUPER,R,togglesplit,
+    bind=SUPERSHIFT,F,forcerendererreload,
     bind=SUPERSHIFT,R,exec,${pkgs.hyprland}/bin/hyprctl reload
   '';
 
@@ -37,6 +38,8 @@
     windowrule=pin,title:^(Picture-in-Picture)$
     windowrule=move 75% 75% ,title:^(Picture-in-Picture)$
     windowrule=size 24% 24% ,title:^(Picture-in-Picture)$
+    windowrule=float,title:^(Media viewer)$
+    windowrulev2=float,class:^(code)$,title:^(Open File)$
   '';
 
   hyprlandConf = ''
@@ -63,6 +66,7 @@
 
     input {
       kb_layout = us
+      kb_options = octopus:octopus
       follow_mouse = 2
       repeat_delay = 250
       numlock_by_default = 1
@@ -84,4 +88,30 @@
   '';
 in {
   xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
+
+  programs.swaylock.settings = {
+    #image = "$HOME/.config/wall";
+    color = "000000f0";
+    font-size = "24";
+    indicator-idle-visible = false;
+    indicator-radius = 100;
+    indicator-thickness = 20;
+    inside-color = "00000000";
+    inside-clear-color = "00000000";
+    inside-ver-color = "00000000";
+    inside-wrong-color = "00000000";
+    key-hl-color = "79b360";
+    line-color = "000000f0";
+    line-clear-color = "000000f0";
+    line-ver-color = "000000f0";
+    line-wrong-color = "000000f0";
+    ring-color = "ffffff50";
+    ring-clear-color = "bbbbbb50";
+    ring-ver-color = "bbbbbb50";
+    ring-wrong-color = "b3606050";
+    text-color = "ffffff";
+    text-ver-color = "ffffff";
+    text-wrong-color = "ffffff";
+    show-failed-attempts = true;
+  };
 }

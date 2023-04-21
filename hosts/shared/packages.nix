@@ -59,6 +59,7 @@
     fzf
     git
     btop
+    tldr
     curl
     wget
     neovim
