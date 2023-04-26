@@ -60,7 +60,8 @@ in {
       "editor.fontSize" = 13;
       "editor.lineHeight" = 1.45;
       "editor.fontLigatures" = true;
-      "editor.fontWeight" = 350;
+      "editor.fontWeight" = "400";
+      "editor.fontFamily" = "CaskaydiaCove Nerd Font Mono";
 
       # Behaviour
       "editor.suggest.preview" = true;
@@ -89,7 +90,8 @@ in {
       # Terminal
       "terminal.integrated.cursorStyle" = "underline";
       "terminal.integrated.fontSize" = 13;
-      "terminal.integrated.fontWeight" = "350";
+      "terminal.integrated.fontWeight" = "400";
+      "terminal.integrated.fontFamily" = "CaskaydiaCove Nerd Font Mono";
       "terminal.integrated.scrollback" = 10000;
       "terminal.integrated.smoothScrolling" = true;
 

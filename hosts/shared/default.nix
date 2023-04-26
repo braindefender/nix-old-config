@@ -44,18 +44,19 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   };
 
   # TODO: Move to a separate file
   fonts = {
     fonts = with pkgs; [
-      corefonts
+      corefonts # MS Windows Fonts
+      cantarell-fonts # GNOME 3 Default Font
       noto-fonts
       noto-fonts-emoji
       font-awesome
       (nerdfonts.override {
-        fonts = ["FiraCode" "JetBrainsMono"];
+        fonts = ["CascadiaCode" "FiraCode" "JetBrainsMono"];
       })
     ];
 
@@ -66,6 +67,10 @@
         enable = true;
         autohint = true;
         style = "hintfull";
+      };
+
+      defaultFonts = {
+        emoji = ["Segoe UI Emoji" "Noto Fonts Emoji"];
       };
 
       subpixel.lcdfilter = "default";

@@ -1,67 +1,83 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   execute = ''
+    exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=${pkgs.waybar}/bin/waybar
-    exec-once=${pkgs.swaybg}/bin/swaybg
+    exec-once=${pkgs.swww}/bin/swww init
+    exec-once=${pkgs.swww}/bin/swww img ${config.xdg.configHome}/wall
   '';
 
   bindings = ''
-    bindm=SUPER,mouse:272,movewindow
-    bindm=SUPER,mouse:273,resizewindow
+    bindm = SUPER, mouse:272, movewindow
+    bindm = SUPER, mouse:273, resizewindow
 
-    bind=SUPER,left,movefocus,l
-    bind=SUPER,down,movefocus,d
-    bind=SUPER,up,movefocus,u
-    bind=SUPER,right,movefocus,r
+    bind = SUPER,left,movefocus,l
+    bind = SUPER,down,movefocus,d
+    bind = SUPER,up,movefocus,u
+    bind = SUPER,right,movefocus,r
 
     bindl=CTRL_SUPER,left,workspace,-1
     bindl=CTRL_SUPER,right,workspace,+1
 
-    bind=CTRLSHIFT,left,movetoworkspace,-1
-    bind=CTRLSHIFT,right,movetoworkspace,+1
+    bind = CTRLSHIFT,left,movetoworkspace,-1
+    bind = CTRLSHIFT,right,movetoworkspace,+1
 
-    bind=SUPER,Return,exec,${pkgs.kitty}/bin/kitty
-    bind=SUPER,Escape,exit,
-    bind=SUPER,Q,killactive,
-    bind=SUPER,L,exec,${pkgs.swaylock}/bin/swaylock
-    bind=SUPER,E,exec,${pkgs.pcmanfm}/bin/pcmanfm
-    bind=SUPER,H,togglefloating,
-    bind=SUPER,Space,exec,${pkgs.wofi}/bin/wofi --show drun
-    bind=SUPER,F,fullscreen,
-    bind=SUPER,R,togglesplit,
-    bind=SUPERSHIFT,F,forcerendererreload,
-    bind=SUPERSHIFT,R,exec,${pkgs.hyprland}/bin/hyprctl reload
+    bind = SUPER,Return,exec,${pkgs.kitty}/bin/kitty
+    bind = SUPER,Escape,exit,
+    bind = SUPER,Q,killactive,
+    bind = SUPER,L,exec,${pkgs.swaylock}/bin/swaylock
+    bind = SUPER,E,exec,${pkgs.pcmanfm}/bin/pcmanfm
+    bind = SUPER,H,togglefloating,
+    bind = SUPER,Space,exec,${pkgs.wofi}/bin/wofi --show drun
+    bind = SUPER,F,fullscreen,
+    bind = SUPER,R,togglesplit,
+    bind = SUPERSHIFT,F,forcerendererreload,
+    bind = SUPERSHIFT,R,exec,${pkgs.hyprland}/bin/hyprctl reload
   '';
 
   windowRules = ''
-    windowrule=float,title:^(Volume Control)$
-    windowrule=float,title:^(Picture-in-Picture)$
-    windowrule=pin,title:^(Picture-in-Picture)$
-    windowrule=move 75% 75% ,title:^(Picture-in-Picture)$
-    windowrule=size 24% 24% ,title:^(Picture-in-Picture)$
-    windowrule=float,title:^(Media viewer)$
-    windowrulev2=float,class:^(code)$,title:^(Open File)$
+    windowrule = float,title:^(Volume Control)$
+    windowrule = float,title:^(Picture-in-Picture)$
+    windowrule = pin,title:^(Picture-in-Picture)$
+    windowrule = move 75% 75% ,title:^(Picture-in-Picture)$
+    windowrule = size 24% 24% ,title:^(Picture-in-Picture)$
+    windowrule = float,title:^(Media viewer)$
+    windowrulev2 = float,class:^(code)$,title:^(Open File)$
   '';
 
   hyprlandConf = ''
     general {
-      border_size=1
-      gaps_in=4
-      gaps_out=8
-      layout=dwindle
+      border_size = 2
+      gaps_in = 4
+      gaps_out = 8
+      layout = master
     }
 
     decoration {
-      multisample_edges = false
+      rounding = 8
+      multisample_edges = true
       fullscreen_opacity = 1
       inactive_opacity = 0.9
       active_opacity = 1
       drop_shadow = false
       blur = true
-      rounding = 0
+      blur_new_optimizations = true
     }
 
     animations {
       enabled = true
+
+      bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+
+      animation = windows, 1, 7, myBezier
+      animation = windowsOut, 1, 7, default, popin 80%
+      animation = border, 1, 10, default
+      animation = borderangle, 1, 8, default
+      animation = fade, 1, 7, default
+      animation = workspaces, 1, 6, default
     }
 
     input {
@@ -75,9 +91,13 @@
     }
 
     dwindle {
-      pseudotile = false
+      pseudotile = true
       preserve_split = true
-      force_split = 2
+    }
+
+    master {
+      new_is_master = false
+      mfact = 0.66
     }
 
     monitor=,3440x1440@120,0x0,1

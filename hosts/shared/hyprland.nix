@@ -27,7 +27,7 @@ in {
     systemPackages = with pkgs; [
       grim
       slurp
-      swaybg
+      swww # wallpaper daemon
       swaylock
       wl-clipboard
       wlr-randr
@@ -44,4 +44,6 @@ in {
     xwayland.enable = true;
     nvidiaPatches = true;
   };
+
+  xdg.portal.wlr.enable = true;
 }
