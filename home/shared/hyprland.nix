@@ -81,13 +81,12 @@
     }
 
     input {
-      kb_layout = us
-      kb_options = octopus:octopus
+      sensitivity = 0
       follow_mouse = 2
       repeat_delay = 250
-      numlock_by_default = 1
       accel_profile = flat
-      sensitivity = 0
+      numlock_by_default = 1
+      kb_file = ${config.xdg.configHome}/xkb/symbols/octopus
     }
 
     dwindle {

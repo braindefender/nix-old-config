@@ -13,6 +13,6 @@ in {
       ["wheel" "video" "audio" "input" "networkmanager"]
       ++ ifTheyExist ["camera" "git" "docker" "mysql" "kvm" "libvirtd"];
     packages = [pkgs.home-manager];
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
   };
 }

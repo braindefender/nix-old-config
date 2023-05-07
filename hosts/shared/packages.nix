@@ -57,12 +57,14 @@
     bat
     exa
     fzf
+    wev
     git
     btop
     tldr
     curl
     wget
     neovim
+    nushell
     ripgrep
     usbutils
     pciutils

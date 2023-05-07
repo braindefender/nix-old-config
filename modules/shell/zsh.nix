@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  user,
   ...
 }: {
   programs = {
@@ -18,6 +19,7 @@
       dotDir = ".config/zsh";
 
       initExtra = ''
+        zmodload zsh/zprof
         FZF_TAB_COMMAND=(
           ${lib.getExe pkgs.fzf}
           --ansi
@@ -112,7 +114,6 @@
         enable = true;
         zplugHome = "${config.xdg.configHome}/zsh/zplug";
         plugins = [
-          {name = "Aloxaf/fzf-tab";}
           {name = "zdharma-continuum/fast-syntax-highlighting";}
           {name = "zsh-users/zsh-completions";}
           {name = "zsh-users/zsh-autosuggestions";}
@@ -130,7 +131,7 @@
         v = "${lib.getExe neovim}";
         cat = "${lib.getExe bat} -p";
         size = "du -sh";
-        # TODO: add dust (pkgs: du-dust)
+        dust = "${lib.getExe du-dust}";
         hx = "helix";
 
         # Exa instead of ls
