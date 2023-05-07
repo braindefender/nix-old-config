@@ -16,7 +16,7 @@
   };
 in {
   desktop = lib.nixosSystem {
-    inherit system;
+    inherit system pkgs;
     specialArgs = {
       inherit inputs user name system;
       host.hostName = "desktop";
