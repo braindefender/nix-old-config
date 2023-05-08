@@ -6,13 +6,19 @@
   ...
 }:
 let
-  nushell = builtins.readFile ./nushell.nu;
+  nushell_config = builtins.readFile ./nushell.nu;
+  nushell_git_completions = builtins.readFile ./git-completions.nu;
+
+  nushell_combined = builtins.concatStringsSep "\n" [
+    nushell_config
+    nushell_git_completions
+  ];
 in {
   programs = {
     nushell = {
       enable = true;
 
-      configFile.text = nushell;
+      configFile.text = nushell_combined;
 
       extraEnv = ''
         let-env FZF_DEFAULT_OPTS = "
