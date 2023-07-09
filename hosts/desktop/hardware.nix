@@ -4,6 +4,10 @@
   pkgs,
   ...
 }: {
+  # Define hostname
+  networking.hostName = "desktop";
+
+  # Boot options
   boot = {
     # Before boot
     initrd = {
@@ -22,14 +26,8 @@
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.powerManagement.enable = false;
 
-  # Enable QMK Firmware for keyboard
-  hardware.keyboard.qmk.enable = true;
-
   # Enable Bluetooth service
   services.blueman.enable = true;
-
-  # Define hostname
-  networking.hostName = "desktop";
 
   # Enable Intel microcode
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

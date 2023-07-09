@@ -1,12 +1,12 @@
 {pkgs, ...}: let
   prettier = {"editor.defaultFormatter" = "esbenp.prettier-vscode";};
+  font = "CaskaydiaCove Nerd Font Mono";
 in {
-  xdg.configFile."code-flags.conf".text = ''
-    --enable-features=UseOzonePlatform
-    --ozone-platform=wayland
-  '';
-
   home.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  # pkgs.overlays = [
+  #   (import ./electron-wayland.nix)
+  # ];
 
   programs.vscode = {
     enable = true;
@@ -23,12 +23,8 @@ in {
 
     userSettings = {
       "telemetry.telemetryLevel" = "off";
-      "emmet.useInlineCompletions" = true;
       "security.workspace.trust.enabled" = false;
       "extensions.ignoreRecommendations" = true;
-      "workbench.colorTheme" = "Catppuccin Macchiato";
-
-      "window.zoomLevel" = 1;
       "window.titleBarStyle" = "custom";
 
       "workbench.settings.useSplitJSON" = true;
@@ -61,7 +57,10 @@ in {
       "editor.lineHeight" = 1.45;
       "editor.fontLigatures" = true;
       "editor.fontWeight" = "400";
-      "editor.fontFamily" = "CaskaydiaCove Nerd Font Mono";
+      "editor.fontFamily" = font;
+
+      # Colorscheme
+      "workbench.colorTheme" = "Catppuccin Macchiato";
 
       # Behaviour
       "editor.suggest.preview" = true;
@@ -71,6 +70,7 @@ in {
       "editor.lineNumbers" = "relative";
       "editor.renderLineHighlight" = "all";
       "editor.gotoLocation.multipleDefinitions" = "goto";
+      "emmet.useInlineCompletions" = true;
 
       # Scroll
       "editor.smoothScrolling" = true;
@@ -91,17 +91,20 @@ in {
       "terminal.integrated.cursorStyle" = "underline";
       "terminal.integrated.fontSize" = 13;
       "terminal.integrated.fontWeight" = "400";
-      "terminal.integrated.fontFamily" = "CaskaydiaCove Nerd Font Mono";
+      "terminal.integrated.fontFamily" = font;
       "terminal.integrated.scrollback" = 10000;
       "terminal.integrated.smoothScrolling" = true;
 
-      # VIM Settings
+      # VIM
+
+      ## VIM Settings
       "vim.leader" = " ";
       "vim.history" = 1000;
       "vim.inccommand" = "append"; # show inline substitutions
       "vim.useSystemClipboard" = true;
+      "vim.vimrc.enable" = true;
 
-      # VIM Keybindings
+      ## VIM Keybindings
       "vim.handleKeys" = {
         "<C-d>" = true;
         "<C-f>" = false;
@@ -116,9 +119,11 @@ in {
         }
       ];
 
-      # VIM Plugins
+      ## VIM Plugins
       "vim.camelCaseMotion.enable" = true;
       "vim.highlightedyank.enable" = true;
+
+      # Language-specific settings
 
       "typescript.updateImportsOnFileMove.enabled" = "always";
 

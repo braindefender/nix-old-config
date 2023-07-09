@@ -30,15 +30,10 @@
     };
 
     #xserver = {
-    #  enable = true;
-    #  layout = "us";
     #  displayManager.gdm.enable = true;
     #  displayManager.autoLogin.enable = true;
     #  displayManager.autoLogin.user = "${user}";
-    #  windowManager.i3.enable = true;
     #};
-
-    # udev.packages = [pkgs.gnome.gnome-settings-daemon];
   };
 
   virtualisation = {

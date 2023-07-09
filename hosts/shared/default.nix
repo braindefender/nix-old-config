@@ -13,13 +13,17 @@
     ./base.nix
     ./boot.nix
     ./users.nix
+    ./fonts.nix
     ./locale.nix
     ./packages.nix
     ./programs.nix
     ./security.nix
     ./services.nix
     ./pipewire.nix
-    ./hyprland.nix
+    ./keyboard.nix
+    ./universal.nix
+    # ./hyprland.nix
+    ./i3.nix
   ];
 
   # Default network settings. DHCP and Network Manager.
@@ -44,36 +48,6 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-  };
-
-  # TODO: Move to a separate file
-  fonts = {
-    fonts = with pkgs; [
-      corefonts # MS Windows Fonts
-      cantarell-fonts # GNOME 3 Default Font
-      noto-fonts
-      noto-fonts-emoji
-      font-awesome
-      (nerdfonts.override {
-        fonts = ["CascadiaCode" "FiraCode" "JetBrainsMono"];
-      })
-    ];
-
-    fontconfig = {
-      enable = true;
-      antialias = true;
-      hinting = {
-        enable = true;
-        autohint = true;
-        style = "hintfull";
-      };
-
-      defaultFonts = {
-        emoji = ["Segoe UI Emoji" "Noto Fonts Emoji"];
-      };
-
-      subpixel.lcdfilter = "default";
-    };
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 }

@@ -7,7 +7,6 @@
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
 
   programs = {
-    zsh.initExtraFirst = ''eval "$(${lib.getExe pkgs.starship} init zsh)"'';
     starship = {
       enable = true;
       settings = {
@@ -53,109 +52,6 @@
         character = {
           success_symbol = "[❱](bold blue)[❱](bold cyan)[❱](bold green)[❱](bold yellow)[❱](bold red)";
           error_symbol = "[](bold blue)[](bold cyan)[](bold green)[](bold yellow)[](bold red)";
-        };
-
-        # icons
-
-        aws = {
-          symbol = "  ";
-        };
-
-        buf = {
-          symbol = " ";
-        };
-
-        c = {
-          symbol = " ";
-        };
-
-        conda = {
-          symbol = " ";
-        };
-
-        dart = {
-          symbol = " ";
-        };
-
-        docker_context = {
-          symbol = " ";
-        };
-
-        elixir = {
-          symbol = " ";
-        };
-
-        elm = {
-          symbol = " ";
-        };
-
-        golang = {
-          symbol = " ";
-        };
-
-        haskell = {
-          symbol = " ";
-        };
-
-        hg_branch = {
-          symbol = " ";
-        };
-
-        java = {
-          symbol = " ";
-        };
-
-        julia = {
-          symbol = " ";
-        };
-
-        lua = {
-          symbol = " ";
-        };
-
-        memory_usage = {
-          symbol = " ";
-        };
-
-        meson = {
-          symbol = "喝 ";
-        };
-
-        nim = {
-          symbol = " ";
-        };
-
-        nix_shell = {
-          symbol = " ";
-        };
-
-        nodejs = {
-          symbol = " ";
-          format = "[via](8) [$symbol($version)]($style)";
-        };
-
-        package = {
-          symbol = " ";
-        };
-
-        python = {
-          symbol = " ";
-        };
-
-        ruby = {
-          symbol = " ";
-        };
-
-        rust = {
-          symbol = " ";
-        };
-
-        scala = {
-          symbol = " ";
-        };
-
-        spack = {
-          symbol = "🅢 ";
         };
       };
     };

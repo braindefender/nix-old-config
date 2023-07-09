@@ -1,14 +1,14 @@
 {modulesPath, ...}: {
-  imports =
+  imports = [
     # Default system installer configuration
-    [(modulesPath + "/installer/scan/not-detected.nix")]
-    ++
+    (modulesPath + "/installer/scan/not-detected.nix")
     # Shared configuration across all machines
-    [(import ../shared)]
-    ++
+    ../shared
     # Hardware configuration
-    [(import ./hardware.nix)]
-    ++
+    ./hardware.nix
     # Partition table
-    [(import ./partitions.nix)];
+    ./partitions.nix
+    # Display configuration
+    ./display.nix
+  ];
 }

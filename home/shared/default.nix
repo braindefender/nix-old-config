@@ -9,7 +9,7 @@
     ./shell.nix
     ./packages.nix
     ./services.nix
-    ./hyprland.nix
+    # ./hyprland.nix
     ./vscode.nix
     ./kitty.nix
     ./wofi.nix
