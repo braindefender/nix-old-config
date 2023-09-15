@@ -26,6 +26,7 @@ in {
       "security.workspace.trust.enabled" = false;
       "extensions.ignoreRecommendations" = true;
       "window.titleBarStyle" = "custom";
+      "window.zoomLevel" = 1;
 
       "workbench.settings.useSplitJSON" = true;
       "workbench.layoutControl.type" = "toggles";

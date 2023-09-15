@@ -9,9 +9,18 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ./nixos.nix
+
+    # XServer configuration and window managers
+    # ./xserver
+
+    # Wayland configuration and window managers
+    ./wayland
+
+    # Common system configuration
+    ./common
+
     ./env.nix
-    ./base.nix
-    ./boot.nix
     ./users.nix
     ./fonts.nix
     ./locale.nix
@@ -20,10 +29,6 @@
     ./security.nix
     ./services.nix
     ./pipewire.nix
-    ./keyboard.nix
-    ./universal.nix
-    # ./hyprland.nix
-    ./i3.nix
   ];
 
   # Default network settings. DHCP and Network Manager.
@@ -34,20 +39,4 @@
 
   # Enable power management TODO: Check
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-
-  # hardware = {
-  # enableRedistributableFirmware = true;
-
-  # opengl = {
-  #   enable = true;
-  #   driSupport = true;
-  #   driSupport32Bit = true;
-  #   # TODO: Check that extraPackages are needed?
-  # };
-  # };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  };
 }

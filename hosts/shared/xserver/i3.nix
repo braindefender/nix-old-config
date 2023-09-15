@@ -19,8 +19,6 @@
       package = pkgs.i3-rounded;
       extraPackages = with pkgs; [
         rofi
-        xorg.xkbcomp
-        xorg.xmodmap
       ];
     };
   };
